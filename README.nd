@@ -1,1 +1,33 @@
-Hombre Salando
+Juego Runner
+
+Este es un simple juego de plataformas donde el jugador debe esquivar 10 obstáculos utilizando las teclas de dirección y la barra espaciadora.
+
+Controles
+
+Flecha Arriba (↑): Mover hacia arriba
+
+Flecha Abajo (↓): Agacharse
+
+Flecha Izquierda (←): Retroceder
+
+Flecha Derecha (→): Avanzar hacia adelante
+
+Espacio: Saltar
+
+Cómo jugar
+
+Abre el archivo index.html en un navegador.
+
+Usa las teclas para mover al personaje y evitar los obstáculos.
+
+¡Diviértete esquivando los 10 obstáculos y llega lo más lejos posible!
+
+Archivos
+
+index.html: Contiene la estructura principal del juego.
+
+app.js: Contiene la lógica del juego.
+
+README.md: Explicación y controles del juego.
+
+
