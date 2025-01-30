@@ -1,0 +1,63 @@
+// Bloque 1: Configuración del lienzo y variables principales
+const canvas = document.createElement("canvas");
+const ctx = canvas.getCon
+text("2d");
+canvas.width = 800;
+canvas.height = 400;
+document.body.appendChild(canvas);
+
+let player = { x: 50, y: 300, width: 30, height: 30, dy: 0, gravity: 0.5, jumpPower: -10, speed: 5 };
+let obstacles = [];
+let isJumping = false;
+
+// Bloque 2: Generación de obstáculos
+for (let i = 1; i <= 10; i++) {
+    obstacles.push({ x: i * 150, y: 300, width: 30, height: 30 });
+}
+
+// Bloque 3: Manejo de eventos de teclado
+document.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowUp") player.y -= 20;
+    if (event.key === "ArrowDown") player.y += 20;
+    if (event.key === "ArrowLeft") player.x -= player.speed;
+    if (event.key === "ArrowRight") player.x += player.speed;
+    if (event.key === " ") jump();
+});
+
+function jump() {
+    if (!isJumping) {
+        player.dy = player.jumpPower;
+        isJumping = true;
+    }
+}
+
+// Bloque 4: Lógica del juego y animación
+function update() {
+    player.y += player.dy;
+    player.dy += player.gravity;
+
+    if (player.y > 300) {
+        player.y = 300;
+        isJumping = false;
+    }
+
+    draw();
+    requestAnimationFrame(update);
+}
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Dibujar jugador
+    ctx.fillStyle = "blue";
+    ctx.fillRect(player.x, player.y, player.width, player.height);
+    
+    // Dibujar obstáculos
+    ctx.fillStyle = "red";
+    obstacles.forEach(obstacle => {
+        ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+    });
+}
+
+update();
+
